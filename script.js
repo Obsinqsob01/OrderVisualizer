@@ -46,10 +46,6 @@ var section = canvas.width / len;
 
 drawRectangles(max, len, section);
 
-async function callDraw() {
-    await sleep(5000);
-}
-
 //Order the array by bubble
 async function order(list){
     for(var i = 0; i < list.length; i++){
@@ -60,8 +56,7 @@ async function order(list){
                 list[i] = temp;
 
                 await sleep(1000);
-                // callDraw();
-    drawRectangles(max, len, section);
+                drawRectangles(max, len, section);
                 
             }
         }
