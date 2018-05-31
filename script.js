@@ -21,13 +21,13 @@ function getMax(arr){
     return max;
 }
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 //Draw the rectangles in the canvas
 function drawRectangles(max, len, section){
-    context.beginPath();
-    context.rect(0, 0, canvas.width, canvas.height);
-    context.fillStyle = "white";
-    context.fill();
-    context.closePath();
+    context.clearRect(0,0, canvas.width, canvas.height);
 
     for(var i = 0; i < list.length; i++){
         context.beginPath();
@@ -46,12 +46,12 @@ var section = canvas.width / len;
 
 drawRectangles(max, len, section);
 
-function callDraw() {
-    drawRectangles(max, len, section);
+async function callDraw() {
+    await sleep(5000);
 }
 
 //Order the array by bubble
-function order(list){
+async function order(list){
     for(var i = 0; i < list.length; i++){
         for(var j = 0; j < list.length; j++) {
             if(list[i] < list[j]){
@@ -59,7 +59,10 @@ function order(list){
                 list[j] = list[i];
                 list[i] = temp;
 
-                setTimeout(callDraw(), 100);
+                await sleep(1000);
+                // callDraw();
+    drawRectangles(max, len, section);
+                
             }
         }
     }
