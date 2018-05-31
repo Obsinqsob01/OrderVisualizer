@@ -46,6 +46,10 @@ var section = canvas.width / len;
 
 drawRectangles(max, len, section);
 
+function callDraw() {
+    drawRectangles(max, len, section);
+}
+
 //Order the array by bubble
 function order(list){
     for(var i = 0; i < list.length; i++){
@@ -55,9 +59,7 @@ function order(list){
                 list[j] = list[i];
                 list[i] = temp;
 
-                window.setTimeout(() => {
-                    drawRectangles(max, len, section);                            
-                }, 1000);
+                setTimeout(callDraw(), 100);
             }
         }
     }
